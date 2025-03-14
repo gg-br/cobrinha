@@ -3,10 +3,10 @@ import { getInputDirection } from "./input.js"
 export const cobraSpeed = 5
 
 const cobraBody = [
-    {x:11, y:11},
-    {x:10, y:11},
-    {x:9, y:11},
+    {x:11, y:11}
 ]
+
+let newSegment = 0
 
 export function update(){
     const inputDirection = getInputDirection()
@@ -29,3 +29,16 @@ export function draw(gameBoard){
     })
 }
 
+export function expandSnake(amount){
+    for (let i = 0; i < newSegment; i++){
+        cobraBody.push({ ...cobraBody[cobraBody.length - 1]})
+    }
+
+    newSegment = 0
+}
+
+export function onCobra(position){
+    return cobraBody.some((segment, index) =>{
+        return position.x == segment.x && position.y == segment.y
+    })
+}

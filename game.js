@@ -1,4 +1,5 @@
 import { update as updateCobra, draw as drawCobra, cobraSpeed } from './cobra.js'
+import { update as updateFood, draw as drawFood} from './food.js'
 
 const gameBoard = document.getElementById('gameBoard')
 
@@ -20,9 +21,11 @@ function main(currenTime){
 
 function update(){
     updateCobra()
+    updateFood()
 }
 
 function draw(){
     gameBoard.innerHTML = ""
     drawCobra(gameBoard)
+    drawFood(gameBoard)
 }

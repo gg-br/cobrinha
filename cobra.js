@@ -1,15 +1,22 @@
-export const cobraSpeed = 1
+import { getInputDirection } from "./input.js"
 
-const cobraBody = [{
-    x:11, y:11
- }]
+export const cobraSpeed = 5
+
+const cobraBody = [
+    {x:11, y:11},
+    {x:10, y:11},
+    {x:9, y:11},
+]
 
 export function update(){
+    const inputDirection = getInputDirection()
+
     for (let i = cobraBody.length - 2; i >= 0; i--){
         cobraBody[i + 1] = { ...cobraBody[i]}
     }
-    cobraBody[0].x += 1
-    cobraBody[0].y += 0
+
+    cobraBody[0].x += inputDirection.x
+    cobraBody[0].y += inputDirection.y
 }
 
 export function draw(gameBoard){

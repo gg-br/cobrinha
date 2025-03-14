@@ -43,8 +43,19 @@ export function addSegments(){
     newSegment = 0
 }
 
-export function onCobra(position){
+export function onCobra(position, {ignoreHead = false}= {}){
     return cobraBody.some((segment, index) =>{
+        if (ignoreHead && index == 0) return
         return position.x == segment.x && position.y == segment.y
     })
+}
+
+export function getCobraHead(){
+    return cobraBody[0]
+}
+
+export function cobraColisao(){
+    return onCobra(getCobraHead(),{
+        ignoreHead: true
+    } )
 }

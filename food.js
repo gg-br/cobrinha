@@ -1,4 +1,5 @@
-import { onCobra, expandSnake } from "./cobra"
+import { onCobra, expandSnake } from "./cobra.js"
+import { randomGridPosition } from "./grid.js"
 
 let food = {
     x:2,
@@ -25,7 +26,7 @@ export function draw(gameBoard){
 function getRandomFoodPosition(){
     let newFoodPosition
 
-    while (newFoodPosition = null || onCobra(newFoodPosition)){
+    while (newFoodPosition == null || onCobra(newFoodPosition)){
         newFoodPosition = randomGridPosition()
     }
 

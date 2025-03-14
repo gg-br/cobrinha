@@ -9,6 +9,8 @@ const cobraBody = [
 let newSegment = 0
 
 export function update(){
+    addSegments()
+
     const inputDirection = getInputDirection()
 
     for (let i = cobraBody.length - 2; i >= 0; i--){
@@ -30,6 +32,10 @@ export function draw(gameBoard){
 }
 
 export function expandSnake(amount){
+    newSegment += amount
+}
+
+export function addSegments(){
     for (let i = 0; i < newSegment; i++){
         cobraBody.push({ ...cobraBody[cobraBody.length - 1]})
     }
